@@ -1,0 +1,3 @@
+[submodule "code/degg-tools"]
+	path = code/degg-tools
+	url = https://github.com/DigitalEthosGlobalGaming/degg-tools.git
