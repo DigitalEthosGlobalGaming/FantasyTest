@@ -20,6 +20,9 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "ProjectTemplate": null,
-    "GameCategory": "None"
+    "GameCategory": "None",
+    "ControlModes": {
+      "Keyboard": true
+    }
   }
 }
