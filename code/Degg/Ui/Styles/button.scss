@@ -1,0 +1,31 @@
+﻿@import "variables.scss";
+
+.button {
+    background-color: $c-secondary-700;
+    cursor: pointer;
+    color: rgba(255,255,255,0.9);
+    font-weight: bold;
+    font-size: $font-size-medium;
+    padding-left: $size-md;
+    padding-right: $size-md;
+    padding-top: $size-sm;
+    padding-bottom: $size-sm;
+    font-family: $font-base;
+    border-radius: $border-radius;
+
+    &:Hover, &.focus {
+        background-color: $c-secondary-400;
+    }
+
+    &.active {
+        background-color: $c-secondary-500;
+        color: rgba(255,255,255,0.90);
+    }
+}
+
+.button-centre {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

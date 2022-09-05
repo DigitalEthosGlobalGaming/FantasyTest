@@ -1,0 +1,45 @@
+﻿@import "../../Styles/variables.scss";
+
+
+.card {
+    font-family: $font-base;
+    padding: 4px;
+    max-width: 20%;
+
+    .card-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: white;
+        background-color: $c-primary-700;
+        border-radius: $border-radius;
+        font-size: $font-size-medium;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $c-primary-600;
+        }
+    }
+
+    .card-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-body {
+        font-size: $font-size-small;
+        padding: 8px;
+    }
+
+    .card-footer {
+        font-style: initial;
+        font-size: $font-size-xsmall;
+        padding: 8px;
+    }
+
+    .card-header {
+        padding: 8px;
+        font-size: $font-size-medium;
+    }
+}
