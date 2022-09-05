@@ -1,6 +1,6 @@
 ﻿namespace Sandbox.Gamemode.Player
 {
-	internal class PlayerController
+	public partial class PlayerController : WalkController
 	{
 	}
 }

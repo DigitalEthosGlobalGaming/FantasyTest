@@ -94,7 +94,7 @@ public partial class MyGame : DeggGame
 		foreach ( var player in players )
 		{
 			player.Position = spawnPosition;
-			player.Spawn();
+			player.Respawn();
 		}
 	}
 
