@@ -1,0 +1,3 @@
+[submodule "code/DeggCommon"]
+	path = code/DeggCommon
+	url = https://github.com/DigitalEthosGlobalGaming/DeggCommon.git
