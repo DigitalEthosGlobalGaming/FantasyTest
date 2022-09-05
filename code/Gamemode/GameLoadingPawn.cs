@@ -16,7 +16,14 @@ namespace FantasyTest
 		public static void OnLoad()
 		{
 			var player = ClientUtil.GetCallingPawn<GameLoadingPawn>();
-			player.EntityName = "GameBasePlayer";
+			if ( ConsoleSystem.Caller.IsUsingVr )
+			{
+				player.EntityName = "GamePlayerVR";
+			}
+			else
+			{
+				player.EntityName = "GameBasePlayer";
+			}
 			player.OnJoin();
 		}
 
