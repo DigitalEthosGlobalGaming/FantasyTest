@@ -26,12 +26,12 @@
   <PropertyGroup>
 	<OutputPath>E:\Program Files (x86)\Steam\steamapps\common\sbox/.vs/output/</OutputPath>
 	<DocumentationFile>E:\Program Files (x86)\Steam\steamapps\common\sbox/.vs/output/fantasytest.xml</DocumentationFile>
-	<RootNamespace>Sandbox</RootNamespace>
+	<RootNamespace>FantasyTest</RootNamespace>
 	<Nullable>disable</Nullable>
   </PropertyGroup>
 
 	<ItemGroup>
-		<Analyzer Include="E:\Program Files (x86)\Steam\steamapps\common\sbox\bin\managed\Sandbox.Generator.dll"/>
+		<Analyzer Include="E:\Program Files (x86)\Steam\steamapps\common\sbox\bin\managed\Sandbox.Generator.dll" />
 		<Reference Include="E:\Program Files (x86)\Steam\steamapps\common\sbox\bin\managed/Sandbox.System.dll" />
 		<Reference Include="E:\Program Files (x86)\Steam\steamapps\common\sbox\bin\managed/Sandbox.Engine.dll" />
 		<Reference Include="E:\Program Files (x86)\Steam\steamapps\common\sbox\bin\managed/Sandbox.Game.dll" />
