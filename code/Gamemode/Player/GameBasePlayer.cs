@@ -1,30 +1,33 @@
 ﻿using Degg.Core;
-using Degg.Util;
 using Sandbox;
+using Sandbox.Gamemode.Player;
 
 namespace FantasyTest
 {
 	public partial class GameBasePlayer : DeggPlayer
 	{
+		public PlayerWeaponBase MainWeapon { get; set; }
 		public override void Respawn()
 		{
 			base.Respawn();
 
 			SetModel( "models/citizen/citizen.vmdl" );
+			SetCamera<PlayerCamera>();
 
-			Controller = new PlayerController();
-
+			Controller = new PCPlayerController();
 			EnableDrawing = true;
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
+			MainWeapon = new Dagger();
+			MainWeapon.ActiveStart( this );
+
 		}
 
 		public override void BuildInput( InputBuilder input )
 		{
 			base.BuildInput( input );
+			Controller?.BuildInput( input );
 		}
-
-
 
 
 		public override void Simulate( Client cl )
@@ -38,9 +41,6 @@ namespace FantasyTest
 
 			if ( IsServer )
 			{
-				var w = Metrics.TerryWidth / 2;
-				var h = Metrics.TerryHeight / 2;
-				DebugOverlay.Box( Position, new Vector3( -w, -w, -h ), new Vector3( w, w, h ) );
 				if ( Input.Pressed( InputButton.Slot1 ) )
 				{
 					MyGame.RestartGame();

@@ -1,6 +1,4 @@
 ﻿using Sandbox;
-using Sandbox.Gamemode.Player;
-
 namespace FantasyTest.Gamemode.Player.VR
 {
 	public partial class GamePlayerVR : GameBasePlayer
@@ -105,19 +103,19 @@ namespace FantasyTest.Gamemode.Player.VR
 			{
 				if ( rotate > deadzone )
 				{
-					Transform = Transform.RotateAround(
-						Input.VR.Head.Position.WithZ( Position.z ),
-						Rotation.FromAxis( Vector3.Up, -angle )
-					);
+					//Transform = Transform.RotateAround(
+					//	Input.VR.Head.Position.WithZ( Position.z ),
+					//	Rotation.FromAxis( Vector3.Up, -angle )
+					//);
 
 					timeSinceLastRotation = 0;
 				}
 				else if ( rotate < -deadzone )
 				{
-					Transform = Transform.RotateAround(
-						Input.VR.Head.Position.WithZ( Position.z ),
-						Rotation.FromAxis( Vector3.Up, angle )
-					);
+					//Transform = Transform.RotateAround(
+					//	Input.VR.Head.Position.WithZ( Position.z ),
+					//	Rotation.FromAxis( Vector3.Up, angle )
+					//);
 
 					timeSinceLastRotation = 0;
 				}

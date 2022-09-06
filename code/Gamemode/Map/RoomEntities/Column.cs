@@ -9,6 +9,7 @@ namespace FantasyTest.MapEntities
 			base.Spawn();
 			SetupPhysicsFromModel( PhysicsMotionType.Static );
 			SetModel( "models/fantasy/column_square.vmdl" );
+			SetupPhysicsFromModel( Sandbox.PhysicsMotionType.Static );
 		}
 
 		public void CreateLights()

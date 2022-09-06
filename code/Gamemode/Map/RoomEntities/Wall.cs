@@ -7,6 +7,7 @@
 		{
 			base.Spawn();
 			SetModel( "models/fantasy/walls.vmdl" );
+			SetupPhysicsFromModel( Sandbox.PhysicsMotionType.Static );
 		}
 	}
 }

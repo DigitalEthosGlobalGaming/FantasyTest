@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sandbox.Gamemode.Player
+﻿namespace Sandbox.Gamemode.Player
 {
-	public class PlayerCamera: ThirdPersonCamera
+	public class PlayerCamera : FirstPersonCamera
 	{
 
 	}

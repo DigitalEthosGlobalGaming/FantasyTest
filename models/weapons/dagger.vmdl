@@ -1,0 +1,106 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "darksteel.vmat"
+								to = "assets/images/darksteel.vmat"
+							},
+							{
+								from = "darkwood.vmat"
+								to = "assets/images/darkwood.vmat"
+							},
+							{
+								from = "lightsteel.vmat"
+								to = "assets/images/lightsteel.vmat"
+							},
+							{
+								from = "steel.vmat"
+								to = "assets/images/steel.vmat"
+							},
+							{
+								from = "lightwood.vmat"
+								to = "assets/images/lightwood.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "wood"
+						collision_tags = "solid"
+						origin = [ 0.0, 0.548637, -9.076277 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 10.0, 11.097275, 41.657665 ]
+					},
+					{
+						_class = "PhysicsShapeCylinder"
+						parent_bone = ""
+						surface_prop = "metal.weapon"
+						collision_tags = "solid"
+						radius = 3.5
+						point0 = [ 0.0, 14.0, 14.0 ]
+						point1 = [ 0.0, -14.0, 14.0 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "metal.weapon"
+						collision_tags = "solid"
+						origin = [ 0.0, 3.277366, 62.110325 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 10.0, 21.782673, 92.46299 ]
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "assets/fantasy/items/dagger.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Cylinder_035",
+							]
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}
