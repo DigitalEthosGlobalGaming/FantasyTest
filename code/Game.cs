@@ -1,7 +1,6 @@
 ﻿using Degg.Core;
 using Degg.Util;
 using FantasyTest;
-using Sandbox.Gamemode.Player;
 using System;
 using System.Linq;
 

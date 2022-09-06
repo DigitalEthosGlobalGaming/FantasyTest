@@ -1,7 +1,8 @@
 ﻿using Degg.Core;
 using Degg.Util;
+using Sandbox;
 
-namespace Sandbox.Gamemode.Player
+namespace FantasyTest
 {
 	public partial class GameBasePlayer : DeggPlayer
 	{
@@ -11,52 +12,24 @@ namespace Sandbox.Gamemode.Player
 
 			SetModel( "models/citizen/citizen.vmdl" );
 
-			Controller = new PlayerController()
-			{
-				AirAcceleration = 1500,
-				WalkSpeed = 260,
-				SprintSpeed = 260,
-				DefaultSpeed = 260,
-				AutoJump = true,
-				Acceleration = 5,
-				GroundFriction = 4 //Do this just for safety if player respawns inside friction volume.
-			};
+			Controller = new PlayerController();
 
 			EnableDrawing = true;
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
-
 		}
-
-		private bool UpdateViewAngle;
-		private Angles UpdatedViewAngle;
-		private float YawSpeed;
-		public InputButton ButtonToSet { get; set; } = InputButton.Slot9;
 
 		public override void BuildInput( InputBuilder input )
 		{
 			base.BuildInput( input );
-
-			if ( UpdateViewAngle )
-			{
-				UpdateViewAngle = false;
-				input.ViewAngles = UpdatedViewAngle;
-			}
-
-			if ( YawSpeed != 0 )
-			{
-				input.ViewAngles = input.ViewAngles.WithYaw( input.ViewAngles.yaw + YawSpeed * Time.Delta );
-			}
-
-			if ( ButtonToSet == InputButton.Slot9 ) return;
-
-			input.SetButton( ButtonToSet, true );
 		}
+
+
+
 
 		public override void Simulate( Client cl )
 		{
 			base.Simulate( cl );
-
 
 			foreach ( var child in Children )
 			{
