@@ -1,8 +1,6 @@
 ﻿using Degg.Core;
 using Degg.Util;
 using FantasyTest;
-using System;
-using System.Linq;
 
 //
 // You don't need to put things in a namespace, but it doesn't hurt.
@@ -18,7 +16,7 @@ namespace Sandbox;
 /// </summary>
 public partial class MyGame : DeggGame
 {
-	public Map GameMap { get; set; }
+
 	public MyGame()
 	{
 		IsStarted = false;
@@ -34,20 +32,6 @@ public partial class MyGame : DeggGame
 		// Create a pawn for this client to play with
 		var pawn = new GameLoadingPawn();
 		client.Pawn = pawn;
-
-		// Get all of the spawnpoints
-		var spawnpoints = Entity.All.OfType<SpawnPoint>();
-
-		// chose a random one
-		var randomSpawnPoint = spawnpoints.OrderBy( x => Guid.NewGuid() ).FirstOrDefault();
-
-		// if it exists, place the pawn there
-		if ( randomSpawnPoint != null )
-		{
-			var tx = randomSpawnPoint.Transform;
-			tx.Position = tx.Position + Vector3.Up * 50.0f; // raise it up
-			pawn.Transform = tx;
-		}
 	}
 
 	public bool IsStarted { get; set; }
@@ -69,6 +53,7 @@ public partial class MyGame : DeggGame
 		if ( IsServer )
 		{
 			RestartGame();
+			SetupWaitingRoom();
 		}
 	}
 
@@ -86,15 +71,29 @@ public partial class MyGame : DeggGame
 		}
 		StartGame();
 	}
-	public static void SpawnPlayers( MapTile t )
+
+	public static void TeleportAllPlayersToWaitingRoom()
 	{
-		var spawnPosition = t.Position + (Vector3.Up * Metrics.TerryHeight * 1.5f);
-		var players = DeggPlayer.GetAllPlayers<GameBasePlayer>();
-		foreach ( var player in players )
+		if ( GameWaitingRoom?.IsValid() ?? false )
 		{
-			player.Position = spawnPosition;
-			player.Respawn();
+			var spawnPosition = GameWaitingRoom.Position + (Vector3.Up * Metrics.TerryHeight);
+			var players = DeggPlayer.GetAllPlayers<GameBasePlayer>();
+			foreach ( var player in players )
+			{
+				player.Position = spawnPosition;
+				player.Respawn();
+			}
 		}
+	}
+
+	public static void SetupWaitingRoom()
+	{
+		if ( GameWaitingRoom?.IsValid() ?? false )
+		{
+			GameWaitingRoom.Delete();
+		}
+		GameWaitingRoom = new WaitingRoom();
+		GameWaitingRoom.Create();
 	}
 
 

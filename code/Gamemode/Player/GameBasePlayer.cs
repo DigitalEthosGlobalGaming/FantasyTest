@@ -20,7 +20,6 @@ namespace FantasyTest
 			EnableShadowInFirstPerson = true;
 			MainWeapon = new Dagger();
 			MainWeapon.ActiveStart( this );
-
 		}
 
 		public override void BuildInput( InputBuilder input )

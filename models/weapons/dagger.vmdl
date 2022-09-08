@@ -66,9 +66,18 @@
 						parent_bone = ""
 						surface_prop = "metal.weapon"
 						collision_tags = "solid"
-						origin = [ 0.0, 3.277366, 62.110325 ]
+						origin = [ 0.0, 3.277366, 57.123051 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 10.0, 21.782673, 92.46299 ]
+						dimensions = [ 10.0, 21.782673, 82.488441 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "metal.weapon"
+						collision_tags = "solid piece"
+						origin = [ 0.0, 4.605353, 102.003983 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 10.0, 24.438656, 12.675591 ]
 					},
 				]
 			},
@@ -94,6 +103,21 @@
 								"Cylinder_035",
 							]
 						}
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "vr_handle"
+						parent_bone = ""
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
 					},
 				]
 			},

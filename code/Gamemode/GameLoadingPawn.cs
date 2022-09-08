@@ -1,10 +1,11 @@
 ﻿using Degg;
+using Degg.Core;
 using Degg.Entities;
 using Sandbox;
 
 namespace FantasyTest
 {
-	public partial class GameLoadingPawn: DeggLoadingPawn
+	public partial class GameLoadingPawn : DeggLoadingPawn
 	{
 
 		public override void HudSetup()
@@ -15,21 +16,40 @@ namespace FantasyTest
 		[ConCmd.Server( "ss.client.loaded" )]
 		public static void OnLoad()
 		{
-			var player = ClientUtil.GetCallingPawn<GameLoadingPawn>();
-			if ( ConsoleSystem.Caller.IsUsingVr )
+			if ( MyGame.GameWaitingRoom == null )
 			{
-				player.EntityName = "GamePlayerVR";
+				MyGame.SetupWaitingRoom();
+				Log.Info( "SETUP" );
+				return;
 			}
-			else
+			if ( MyGame.GameWaitingRoom.IsSetup )
 			{
-				player.EntityName = "GameBasePlayer";
+				var player = ClientUtil.GetCallingPawn<GameLoadingPawn>();
+				if ( ConsoleSystem.Caller.IsUsingVr )
+				{
+					player.EntityName = "GamePlayerVR";
+				}
+				else
+				{
+					player.EntityName = "GameBasePlayer";
+				}
 			}
-			player.OnJoin();
+		}
+
+		public void GameStart()
+		{
+
 		}
 
 		public override Entity OnJoin()
 		{
 			var result = base.OnJoin();
+			if ( result is DeggPlayer player )
+			{
+				player.Respawn();
+				Log.Info( "HERE" );
+			}
+
 			return result;
 		}
 
@@ -42,7 +62,7 @@ namespace FantasyTest
 				{
 					MyGame.StartGame();
 					EntityName = "GameBasePlayer";
-					OnJoin();
+					GameStart();
 				}
 			}
 		}

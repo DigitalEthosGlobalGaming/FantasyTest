@@ -13,9 +13,7 @@ namespace FantasyTest
 		public static int RoomsCount = 10;
 		PointLightEntity WorldLight { get; set; }
 		public MapTile ParentMapTile { get; set; }
-
 		public List<RoomConnection> RoomConnections { get; set; }
-
 		public RoomConnection TopConnection { get; set; }
 		public RoomConnection DownConnection { get; set; }
 		public RoomConnection LeftConnection { get; set; }
@@ -31,13 +29,6 @@ namespace FantasyTest
 			}
 			SetupLights();
 		}
-
-		public override void ServerTick()
-		{
-			base.ServerTick();
-			DebugOverlay.Text( "      [[[[ " + ParentMapTile.GridPosition.x + "," + ParentMapTile.GridPosition.y + " ]]]]", Position );
-		}
-
 
 		public void OnAllChildrenSetup()
 		{

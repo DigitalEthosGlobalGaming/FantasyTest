@@ -31,7 +31,7 @@
 						_class = "Attachment"
 						name = "top_forward"
 						parent_bone = ""
-						relative_origin = [ 0.0, 20.0, 300.0 ]
+						relative_origin = [ 0.0, 10.0, 150.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
@@ -40,7 +40,7 @@
 						_class = "Attachment"
 						name = "top_left"
 						parent_bone = ""
-						relative_origin = [ -20.0, 0.0, 300.0 ]
+						relative_origin = [ -10.0, 0.0, 150.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
@@ -49,7 +49,7 @@
 						_class = "Attachment"
 						name = "top_right"
 						parent_bone = ""
-						relative_origin = [ 20.0, 0.0, 300.0 ]
+						relative_origin = [ 10.0, 0.0, 150.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
@@ -58,7 +58,7 @@
 						_class = "Attachment"
 						name = "top_back"
 						parent_bone = ""
-						relative_origin = [ 0.0, -20.0, 300.0 ]
+						relative_origin = [ 0.0, -10.0, 150.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
@@ -74,7 +74,7 @@
 						filename = "assets/fantasy/map/Column_Round.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
+						import_scale = 0.5
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -96,27 +96,27 @@
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 0.0, 0.0, 51.808895 ]
+						origin = [ 0.0, 0.0, 25.0 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 70.0, 70.0, 104.252998 ]
+						dimensions = [ 35.0, 35.0, 50.0 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 0.0, 0.0, 385.642548 ]
+						origin = [ 0.0, 0.0, 194.211349 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 55.0, 55.0, 28.285601 ]
+						dimensions = [ 30.0, 30.0, 13.272772 ]
 					},
 					{
 						_class = "PhysicsShapeCylinder"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
-						radius = 22.0
-						point0 = [ 0.0, 0.0, 101.991997 ]
-						point1 = [ 0.0, 0.0, 373.479889 ]
+						radius = 11.0
+						point0 = [ 0.0, 0.0, 50.0 ]
+						point1 = [ 0.0, 0.0, 185.036957 ]
 					},
 				]
 			},

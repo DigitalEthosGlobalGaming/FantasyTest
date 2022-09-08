@@ -1,7 +1,6 @@
 ﻿using Degg.GridSystem;
 using Sandbox;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace FantasyTest
 {
@@ -72,7 +71,6 @@ namespace FantasyTest
 			{
 				tile?.OnAllChildrenSetup();
 			}
-			MyGame.SpawnPlayers( MainPath.First() );
 		}
 		public override void ServerTick()
 		{

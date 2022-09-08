@@ -32,12 +32,13 @@
 				children = 
 				[
 					{
-						_class = "PhysicsHullFromRender"
+						_class = "PhysicsShapeBox"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "concrete"
 						collision_tags = "solid"
-						faceMergeAngle = 80.0
-						maxHullVertices = 2
+						origin = [ 100.0, 50.0, 200.0 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 10.0, 200.0, 400.0 ]
 					},
 				]
 			},
@@ -48,9 +49,9 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "assets/fantasy/map/Wall.fbx"
-						import_translation = [ 100.0, 0.0, 0.0 ]
+						import_translation = [ 200.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
+						import_scale = 0.5
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -67,9 +68,123 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "assets/fantasy/map/Wall.fbx"
-						import_translation = [ 100.0, 0.0, 200.0 ]
+						import_translation = [ 200.0, 0.0, 200.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
+						import_scale = 0.5
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Cube_354",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "assets/fantasy/map/Wall.fbx"
+						import_translation = [ 200.0, 0.0, 400.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.5
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Cube_354",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "assets/fantasy/map/Wall.fbx"
+						import_translation = [ 200.0, 0.0, 600.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.5
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Cube_354",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "assets/fantasy/map/Wall.fbx"
+						import_translation = [ 200.0, 200.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.5
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Cube_354",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "assets/fantasy/map/Wall.fbx"
+						import_translation = [ 200.0, 200.0, 200.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.5
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Cube_354",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "assets/fantasy/map/Wall.fbx"
+						import_translation = [ 200.0, 200.0, 400.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.5
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Cube_354",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "assets/fantasy/map/Wall.fbx"
+						import_translation = [ 200.0, 200.0, 600.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 0.5
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"

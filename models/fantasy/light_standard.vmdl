@@ -28,21 +28,6 @@
 				]
 			},
 			{
-				_class = "AttachmentList"
-				children = 
-				[
-					{
-						_class = "Attachment"
-						name = "light"
-						parent_bone = ""
-						relative_origin = [ 25.0, 0.0, 50.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
-						weight = 1.0
-						ignore_rotation = false
-					},
-				]
-			},
-			{
 				_class = "RenderMeshList"
 				children = 
 				[
@@ -63,6 +48,26 @@
 							[
 								"Cylinder_042",
 							]
+						}
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "point_light"
+						game_keys = 
+						{
+							brightness = 1.0
+							position = [ 25.0, 0.0, 50.0 ]
+							range = 750.0
+							fade_distance = 3000.0
+							color = [ 253, 185, 69, 255 ]
+							flicker = true
+							class_name = "CandlePointLight"
 						}
 					},
 				]
