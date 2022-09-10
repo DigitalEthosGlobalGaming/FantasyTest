@@ -74,7 +74,7 @@
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
 						surface_prop = "metal.weapon"
-						collision_tags = "solid piece"
+						collision_tags = "solid pierce"
 						origin = [ 0.0, 4.605353, 102.003983 ]
 						angles = [ 0.0, 0.0, 0.0 ]
 						dimensions = [ 10.0, 24.438656, 12.675591 ]

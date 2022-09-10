@@ -3,6 +3,8 @@
 //
 
 using FantasyTest;
+using Sandbox.DeggCommon.Util;
+using System.Linq;
 
 namespace Sandbox;
 
@@ -26,25 +28,74 @@ public enum GameStateEnum
 public partial class MyGame
 {
 
-	public Map GameMap { get; set; }
+	public static Map GameMap { get; set; }
 
 	public static WaitingRoom GameWaitingRoom { get; set; }
 
 	[Net]
-	public GameStateEnum GameState { get; set; }
+	public static GameStateEnum GameState { get; set; }
 
 	[Net]
-	public bool FirstPlayerJoined { get; set; }
+	public static bool FirstPlayerJoined { get; set; }
+
+	public static void Restart()
+	{
+		Cleanup();
+		Start();
+		ReadyUp();
+	}
+
+	public static void Start()
+	{
+
+	}
+
+	public static void Cleanup()
+	{
+		ModelStore.ModelTasks?.Clear();
+		var game = MyGame.GetCurrent<MyGame>();
+		var isServer = game.IsServer;
+		var allEntities = All.ToList();
+		foreach ( var i in allEntities )
+		{
+			if ( !(i is Client) && !(i is MyGame) )
+			{
+				if ( i?.IsValid() ?? false )
+				{
+					if ( isServer || i.IsClientOnly )
+					{
+						i.Delete();
+					}
+				}
+			};
+		}
+
+		if ( game.IsServer )
+		{
+			GameWaitingRoom?.Delete();
+			GameMap?.Delete();
+			FirstPlayerJoined = false;
+			GameState = GameStateEnum.WAITING;
+			foreach ( var client in Clients )
+			{
+				var p = new GameLoadingPawn();
+				client.Pawn = p;
+			}
+		}
+
+	}
 
 
 	[ConCmd.Server( "game.client.ready" )]
 	public static void ReadyUp()
 	{
 		var game = MyGame.GetCurrent<MyGame>();
-
-		if ( game.FirstPlayerJoined == false )
+		if ( game.IsServer )
 		{
-			game.FirstPlayerJoined = true;
+			if ( FirstPlayerJoined == false )
+			{
+				FirstPlayerJoined = true;
+			}
 		}
 
 	}
@@ -65,8 +116,11 @@ public partial class MyGame
 		if ( GameState == GameStateEnum.WAITING )
 		{
 			GameState = GameStateEnum.INITIALISING;
+			SetupWaitingRoom();
+			Ready();
 		}
 	}
+
 
 	public void Ready()
 	{

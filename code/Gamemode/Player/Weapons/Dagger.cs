@@ -10,13 +10,22 @@ namespace FantasyTest
 	public partial class Dagger : PlayerWeaponBase
 	{
 
-		public static readonly Model WorldModel = Model.Load( "models/weapons/dagger.vmdl" );
-		public override string ViewModelPath => "models/weapons/dagger.vmdl";
+		public override string WorldModel => "weapon_dagger";
+		public override string ViewModelPath => "weapon_dagger";
+
+		public override Transform ViewModelOffset => new Transform( Vector3.Down * 5f + Vector3.Forward * 20f + Vector3.Right * 5f, Rotation.FromAxis( Vector3.Left, 90f ), 0.5f );
+		// override ViewModelScale
 
 		public override void Spawn()
 		{
 			base.Spawn();
 			Tags.Add( "item" );
+		}
+
+		public override void Simulate( Client player )
+		{
+			base.Simulate( player );
+			DebugOverlay.Sphere( Position, 5f, Color.Red );
 		}
 	}
 }

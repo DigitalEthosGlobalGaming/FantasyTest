@@ -8,7 +8,7 @@ namespace FantasyTest
 {
 	public partial class Room : GridMap
 	{
-		public const float FloorSize = 190f;
+		public const float FloorSize = 200f;
 
 		public static int RoomsCount = 10;
 		PointLightEntity WorldLight { get; set; }

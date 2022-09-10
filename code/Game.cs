@@ -1,6 +1,7 @@
 ﻿using Degg.Core;
 using Degg.Util;
 using FantasyTest;
+using System.Collections.Generic;
 
 //
 // You don't need to put things in a namespace, but it doesn't hurt.
@@ -17,8 +18,11 @@ namespace Sandbox;
 public partial class MyGame : DeggGame
 {
 
+	public static List<Client> Clients { get; set; }
+
 	public MyGame()
 	{
+		Clients = new List<Client>();
 		IsStarted = false;
 	}
 
@@ -28,10 +32,17 @@ public partial class MyGame : DeggGame
 	public override void ClientJoined( Client client )
 	{
 		base.ClientJoined( client );
+		Clients.Add( client );
 
 		// Create a pawn for this client to play with
 		var pawn = new GameLoadingPawn();
 		client.Pawn = pawn;
+	}
+
+	public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
+	{
+		base.ClientDisconnect( cl, reason );
+		Clients.Remove( cl );
 	}
 
 	public bool IsStarted { get; set; }
@@ -39,35 +50,31 @@ public partial class MyGame : DeggGame
 	public static void StartGame()
 	{
 		var game = MyGame.GetCurrent<MyGame>();
-		if ( game.GameMap?.IsValid() ?? false )
+		if ( GameMap?.IsValid() ?? false )
 		{
-			game.GameMap.Delete();
+			GameMap.Delete();
 		}
-		game.GameMap = new Map();
+		GameMap = new Map();
 
-		game.GameMap.BuildRooms();
+		GameMap.BuildRooms();
 	}
 	[Event.Hotload]
 	public void OnHotload()
 	{
-		if ( IsServer )
-		{
-			RestartGame();
-			SetupWaitingRoom();
-		}
+		Restart();
 	}
 
 	public static void RestartGame()
 	{
 		var game = MyGame.GetCurrent<MyGame>();
-		if ( !game?.GameMap?.IsSetup ?? true )
+		if ( !GameMap?.IsSetup ?? true )
 		{
 			return;
 		}
-		if ( game.GameMap?.IsValid() ?? false )
+		if ( GameMap?.IsValid() ?? false )
 		{
-			game.GameMap.Delete();
-			game.GameMap = null;
+			GameMap.Delete();
+			GameMap = null;
 		}
 		StartGame();
 	}

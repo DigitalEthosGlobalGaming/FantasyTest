@@ -36,7 +36,7 @@
 						filename = "assets/fantasy/map/Torch.fbx"
 						import_translation = [ 25.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
+						import_scale = 0.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
@@ -65,7 +65,7 @@
 							position = [ 25.0, 0.0, 50.0 ]
 							range = 750.0
 							fade_distance = 3000.0
-							color = [ 253, 185, 69, 255 ]
+							color = [ 199, 21, 133, 255 ]
 							flicker = true
 							class_name = "CandlePointLight"
 						}

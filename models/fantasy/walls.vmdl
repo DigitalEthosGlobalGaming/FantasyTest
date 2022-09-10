@@ -49,7 +49,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "assets/fantasy/map/Wall.fbx"
-						import_translation = [ 200.0, 0.0, 0.0 ]
+						import_translation = [ 200.0, -100.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.5
 						align_origin_x_type = "None"
@@ -68,7 +68,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "assets/fantasy/map/Wall.fbx"
-						import_translation = [ 200.0, 0.0, 200.0 ]
+						import_translation = [ 200.0, -100.0, 200.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.5
 						align_origin_x_type = "None"
@@ -87,7 +87,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "assets/fantasy/map/Wall.fbx"
-						import_translation = [ 200.0, 0.0, 400.0 ]
+						import_translation = [ 200.0, -100.0, 400.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.5
 						align_origin_x_type = "None"
@@ -106,7 +106,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "assets/fantasy/map/Wall.fbx"
-						import_translation = [ 200.0, 0.0, 600.0 ]
+						import_translation = [ 200.0, -100.0, 600.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.5
 						align_origin_x_type = "None"
@@ -125,7 +125,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "assets/fantasy/map/Wall.fbx"
-						import_translation = [ 200.0, 200.0, 0.0 ]
+						import_translation = [ 200.0, 100.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.5
 						align_origin_x_type = "None"
@@ -144,7 +144,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "assets/fantasy/map/Wall.fbx"
-						import_translation = [ 200.0, 200.0, 200.0 ]
+						import_translation = [ 200.0, 100.0, 200.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.5
 						align_origin_x_type = "None"
@@ -163,7 +163,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "assets/fantasy/map/Wall.fbx"
-						import_translation = [ 200.0, 200.0, 400.0 ]
+						import_translation = [ 200.0, 100.0, 400.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.5
 						align_origin_x_type = "None"
@@ -182,7 +182,7 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "assets/fantasy/map/Wall.fbx"
-						import_translation = [ 200.0, 200.0, 600.0 ]
+						import_translation = [ 200.0, 100.0, 600.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.5
 						align_origin_x_type = "None"
