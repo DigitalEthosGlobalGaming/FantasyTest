@@ -5,6 +5,8 @@ namespace FantasyTest.MapEntities
 {
 	public partial class MapEntity : ModelEntity
 	{
+
+		public bool CanPickup { get; set; }
 		public List<Entity> OtherEntities { get; set; }
 		public override void Spawn()
 		{

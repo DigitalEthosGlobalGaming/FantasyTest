@@ -6,6 +6,7 @@ namespace FantasyTest
 {
 	public partial class GameBasePlayer : DeggPlayer
 	{
+		public ClientInventory ClientInventory { get; set; }
 		public PlayerWeaponBase MainWeapon { get; set; }
 
 		public float TimeSinceDropped { get; set; }
@@ -13,6 +14,7 @@ namespace FantasyTest
 		public GameBasePlayer()
 		{
 			Inventory = new PlayerInventory( this );
+			ClientInventory = new ClientInventory( this.Client );
 		}
 		public override void Respawn()
 		{
@@ -25,9 +27,11 @@ namespace FantasyTest
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
 
-			MainWeapon = new Dagger();
-			Inventory.Add( MainWeapon, true );
-			ActiveChild = MainWeapon;
+			if ( MainWeapon?.IsValid() == null )
+			{
+				MainWeapon = new Builder();
+				Inventory.Add( MainWeapon, true );
+			}
 		}
 
 		public override void BuildInput( InputBuilder input )

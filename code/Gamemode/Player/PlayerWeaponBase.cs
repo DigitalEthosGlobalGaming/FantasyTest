@@ -330,13 +330,26 @@ namespace FantasyTest
 			}
 		}
 
+		public virtual TraceResult TraceFromEyes( float distance, float radius )
+		{
+			var forward = Owner.EyeRotation.Forward.Normal;
+			var start = Owner.EyePosition;
+			var end = Owner.EyePosition + forward * distance;
+			var tr = Trace.Ray( start, end )
+				.Ignore( Owner )
+				.Ignore( this )
+				.Size( radius )
+				.Run();
+
+			return tr;
+		}
+
 		public virtual IEnumerable<TraceResult> TraceShove( Vector3 start, Vector3 end, float radius = 2.0f )
 		{
 
 			var tr = Trace.Ray( start, end )
 					.Ignore( Owner )
 					.Ignore( this )
-					.WithoutTags( "zombie", "trigger" )
 					.Size( radius )
 					.Run();
 
