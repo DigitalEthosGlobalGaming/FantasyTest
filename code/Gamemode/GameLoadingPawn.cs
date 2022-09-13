@@ -19,6 +19,7 @@ namespace FantasyTest
 		public bool ModelsReady { get; set; }
 		public override void HudSetup()
 		{
+			// Setups the hud.. duh
 			base.HudSetup();
 		}
 
