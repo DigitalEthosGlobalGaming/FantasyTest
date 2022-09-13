@@ -78,14 +78,7 @@ namespace FantasyTest.MapEntities
 		[Event.Tick.Server]
 		public void ServerTick()
 		{
-			DebugOverlay.Sphere( Position, 5f, Color.Green, 0, true );
-			if ( From?.IsValid() ?? false )
-			{
-				if ( To?.IsValid() ?? false )
-				{
-					DebugOverlay.Line( From.Position, To.Position, 0, false );
-				}
-			}
+
 		}
 
 		public override void Spawn()

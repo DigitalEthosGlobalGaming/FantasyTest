@@ -1,5 +1,4 @@
 ﻿using Degg.Entities.Common;
-using Degg.Util;
 using Sandbox;
 using System.Collections.Generic;
 
@@ -7,25 +6,16 @@ namespace FantasyTest
 {
 	public partial class WaitingRoom : Room
 	{
-		SpawnPoint MainSpawn { get; set; }
 		public List<Entity> WatchedEntities { get; set; }
 
-		public void Create()
+		public override void Create( MapTile tile )
 		{
 			if ( IsClient )
 			{
 				return;
 			}
-
-			if ( MainSpawn?.IsValid() ?? false )
-			{
-				MainSpawn.Delete();
-			}
-
-			MainSpawn = new SpawnPoint();
-			var spawnPosition = Vector3.Up * 1000f;
-			MainSpawn.Position = spawnPosition + (Vector3.Up * Metrics.TerryHeight);
-			Init<RoomTile>( spawnPosition, new Vector2( FloorSize, FloorSize ), 5, 5 );
+			ParentMapTile = tile;
+			Init<RoomTile>( tile.GetWorldPosition(), new Vector2( FloorSize, FloorSize ), 3, 3 );
 			WatchedEntities = new List<Entity>();
 
 			var light = new CandlePointLight()
@@ -33,14 +23,21 @@ namespace FantasyTest
 
 			};
 			WatchedEntities.Add( light );
-			light.Position = MainSpawn.Position + Vector3.Up * 250f;
+			light.Position = Position + Vector3.Up * 250f;
+
+		}
+
+
+
+		public void PlayerJoin()
+		{
+
 		}
 
 
 		public override void OnSetup()
 		{
 			base.OnSetup();
-			SpawnAllLoadingPlayers();
 		}
 
 		protected override void OnDestroy()

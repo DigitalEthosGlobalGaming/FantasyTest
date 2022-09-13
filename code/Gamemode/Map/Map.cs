@@ -8,13 +8,13 @@ namespace FantasyTest
 	{
 		public bool IsChildrenSetup { get; set; }
 		public List<MapTile> MainPath { get; set; }
-		public void BuildRooms()
+		public virtual void BuildRooms()
 		{
 			IsChildrenSetup = false;
 			var roomsCount = 5;
 			if ( IsServer )
 			{
-				var gridSize = Room.RoomsCount * Room.FloorSize;
+				var gridSize = 3 * Room.FloorSize;
 				gridSize = gridSize + Room.FloorSize;
 				Init<MapTile>( Vector3.Zero, new Vector2( gridSize, gridSize ), roomsCount, roomsCount );
 			}
@@ -26,6 +26,13 @@ namespace FantasyTest
 			{
 				return;
 			}
+			SetupRooms();
+
+
+		}
+
+		public virtual void SetupRooms()
+		{
 			var startingPosition = Rand.Int( 0, XSize - 1 );
 			var endingPosition = Rand.Int( 0, XSize - 1 );
 
@@ -65,7 +72,6 @@ namespace FantasyTest
 		}
 		public void OnAllChildrenSetup()
 		{
-			Log.Info( "OnAllChildrenSetup" );
 			var tiles = GetGridAsList<MapTile>();
 			foreach ( var tile in tiles )
 			{

@@ -30,7 +30,7 @@ public partial class MyGame
 
 	public static Map GameMap { get; set; }
 
-	public static WaitingRoom GameWaitingRoom { get; set; }
+	public static WaitingMap GameWaitingMap { get; set; }
 
 	[Net]
 	public static GameStateEnum GameState { get; set; }
@@ -72,7 +72,7 @@ public partial class MyGame
 
 		if ( game.IsServer )
 		{
-			GameWaitingRoom?.Delete();
+			GameWaitingMap?.Delete();
 			GameMap?.Delete();
 			FirstPlayerJoined = false;
 			GameState = GameStateEnum.WAITING;
@@ -108,6 +108,14 @@ public partial class MyGame
 		{
 			Initialise();
 		}
+
+		if ( GameState == GameStateEnum.INITIALISING )
+		{
+			if ( GameWaitingMap.IsSetup && GameWaitingMap.IsChildrenSetup )
+			{
+				Ready();
+			}
+		}
 	}
 
 
@@ -117,7 +125,6 @@ public partial class MyGame
 		{
 			GameState = GameStateEnum.INITIALISING;
 			SetupWaitingRoom();
-			Ready();
 		}
 	}
 

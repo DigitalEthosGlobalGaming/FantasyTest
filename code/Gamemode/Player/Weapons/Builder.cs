@@ -26,6 +26,8 @@ namespace FantasyTest
 		public override string WorldModel => "weapon_dagger";
 		public override string ViewModelPath => "weapon_dagger";
 
+		public float NextPlaceTime = 0f;
+
 		public override Transform ViewModelOffset => new Transform( Vector3.Down * 5f + Vector3.Forward * 20f + Vector3.Right * 5f, Rotation.FromAxis( Vector3.Left, 90f ), 0.5f );
 		// override ViewModelScale
 
@@ -76,6 +78,11 @@ namespace FantasyTest
 					return;
 				}
 
+				if ( !IsValidPlacement( position, rot ) )
+				{
+					return;
+				}
+
 				var className = prop.ClassName;
 				if ( className.Trim() == "" )
 				{
@@ -84,11 +91,32 @@ namespace FantasyTest
 				var newEntity = Entity.CreateByName<MapProp>( className );
 				newEntity.Position = position;
 				newEntity.Rotation = rot;
-
 				newEntity.SetPropData( prop );
+
 
 				CurrentPropResource = DeggGameResource.GetRandom<PropResource>();
 			}
+		}
+
+		public bool IsValidPlacement( Vector3 position, Rotation rot )
+		{
+			var player = GetOwner<GameBasePlayer>();
+			if ( player?.IsValid() ?? false )
+			{
+
+				var bboxMaybe = player?.MyRoom?.GetBBox();
+				if ( bboxMaybe.HasValue )
+				{
+					var bbox = bboxMaybe.Value;
+					var checker = new BBox( position );
+					if ( bbox.Contains( checker ) )
+					{
+						return true;
+					}
+				}
+
+			}
+			return false;
 		}
 
 		public override void AttackPrimary()
@@ -103,7 +131,7 @@ namespace FantasyTest
 
 			AdvLog.Info( this.GetHashCode(), Time.Now );
 
-			var trace = TraceFromEyes( 500f, 5f );
+			var trace = TraceFromEyes( 500f, 5f, new string[] { "player-room" } );
 			if ( trace.Hit )
 			{
 				var rotation = PlacementRotation;
@@ -115,7 +143,6 @@ namespace FantasyTest
 				CreateProp( trace.EndPosition, Rotation.FromAxis( Vector3.Up, rotation ) );
 			}
 		}
-
 		public override void Simulate( Client player )
 		{
 			base.Simulate( player );
@@ -128,7 +155,7 @@ namespace FantasyTest
 			{
 				if ( ClientGhost?.IsValid() ?? false )
 				{
-					var trace = TraceFromEyes( 500f, 5f );
+					var trace = TraceFromEyes( 500f, 5f, new string[] { "player-room" } );
 					if ( trace.Hit )
 					{
 						var rotation = PlacementRotation;
@@ -138,6 +165,15 @@ namespace FantasyTest
 						}
 						ClientGhost.Position = trace.EndPosition;
 						ClientGhost.Rotation = Rotation.FromAxis( Vector3.Up, rotation );
+
+						if ( IsValidPlacement( ClientGhost.Position, ClientGhost.Rotation ) )
+						{
+							ClientGhost.RenderColor = Color.Green.WithAlpha( 0.5f );
+						}
+						else
+						{
+							ClientGhost.RenderColor = Color.Red.WithAlpha( 0.5f );
+						}
 					}
 				}
 			}

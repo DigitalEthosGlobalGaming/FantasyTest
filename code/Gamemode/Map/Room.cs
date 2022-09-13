@@ -9,6 +9,7 @@ namespace FantasyTest
 	public partial class Room : GridMap
 	{
 		public const float FloorSize = 200f;
+		public const float RoomHeight = 400f;
 
 		public static int RoomsCount = 10;
 		PointLightEntity WorldLight { get; set; }
@@ -20,9 +21,13 @@ namespace FantasyTest
 
 		public RoomConnection RightConnection { get; set; }
 
+		[Net]
+		public float Height { get; set; }
+
 		public override void OnSetup()
 		{
 			base.OnSetup();
+			Height = RoomHeight;
 			if ( IsClient )
 			{
 				return;
@@ -44,6 +49,19 @@ namespace FantasyTest
 			ConnectToRoom( n[3] );
 		}
 
+		public BBox GetBBox()
+		{
+			var dim = (GetMapSize() / 2);
+			var pos = Position.WithZ( 0 );
+			var min = pos - dim;
+			var max = (pos + dim).WithZ( Height );
+
+
+			return new BBox( min, max );
+		}
+
+		public bool IsInRoom { get; set; }
+
 		public void ConnectToRoom( MapTile other )
 		{
 			if ( other == null )
@@ -51,7 +69,7 @@ namespace FantasyTest
 				return;
 			}
 
-			if ( other?.HasRoom ?? false )
+			if ( other?.HasRoom() ?? false )
 			{
 				if ( other?.TileRoom?.IsValid() ?? false )
 				{
@@ -102,7 +120,7 @@ namespace FantasyTest
 			}
 		}
 
-		public void Create( MapTile tile )
+		public virtual void Create( MapTile tile )
 		{
 			if ( IsClient )
 			{

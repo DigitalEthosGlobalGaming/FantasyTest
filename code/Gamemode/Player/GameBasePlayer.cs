@@ -6,6 +6,9 @@ namespace FantasyTest
 {
 	public partial class GameBasePlayer : DeggPlayer
 	{
+
+		[Net]
+		public PlayerRoom MyRoom { get; set; }
 		public ClientInventory ClientInventory { get; set; }
 		public PlayerWeaponBase MainWeapon { get; set; }
 
@@ -31,6 +34,21 @@ namespace FantasyTest
 			{
 				MainWeapon = new Builder();
 				Inventory.Add( MainWeapon, true );
+			}
+			SetupRoom();
+		}
+
+		public void SetupRoom()
+		{
+			if ( MyRoom?.IsValid() ?? false )
+			{
+				return;
+			}
+
+			var newRoom = PlayerRoom.GetFreePlayerRoom();
+			if ( newRoom?.IsValid ?? false )
+			{
+				newRoom.Assign( Client );
 			}
 		}
 

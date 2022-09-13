@@ -29,15 +29,6 @@ namespace FantasyTest
 			Floor.SetupPhysicsFromModel( PhysicsMotionType.Static );
 			Floor.SetModel( "models/fantasy/floor_standard.vmdl" );
 			Floor.Position = Position;
-
-			if ( Rand.Float() > 0.8 )
-			{
-				var lightModel = new Column();
-				lightModel.Position = Floor.Position;
-				lightModel.CreateLights();
-				Entities.Add( lightModel );
-			}
-
 		}
 
 		public override void OnMapSetup()
@@ -120,7 +111,6 @@ namespace FantasyTest
 		public override void ServerTick( float delta, float currentTick )
 		{
 			base.ServerTick( delta, currentTick );
-			DebugOverlay.Text( GridPosition.x + "," + GridPosition.y, Position, 0, 1500 );
 		}
 		protected override void OnDestroy()
 		{

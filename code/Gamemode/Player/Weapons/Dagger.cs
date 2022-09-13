@@ -25,7 +25,6 @@ namespace FantasyTest
 		public override void Simulate( Client player )
 		{
 			base.Simulate( player );
-			DebugOverlay.Sphere( Position, 5f, Color.Red );
 		}
 	}
 }

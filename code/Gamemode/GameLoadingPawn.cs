@@ -35,12 +35,12 @@ namespace FantasyTest
 		[ConCmd.Server( "ss.client.loaded" )]
 		public static void OnLoad()
 		{
-			if ( MyGame.GameWaitingRoom == null )
+			if ( MyGame.GameWaitingMap == null )
 			{
 				MyGame.SetupWaitingRoom();
 				return;
 			}
-			if ( MyGame.GameWaitingRoom.IsSetup )
+			if ( MyGame.GameState == GameStateEnum.READY )
 			{
 				var player = ClientUtil.GetCallingPawn<GameLoadingPawn>();
 				if ( ConsoleSystem.Caller.IsUsingVr )
@@ -75,7 +75,7 @@ namespace FantasyTest
 
 		public override Entity OnJoin()
 		{
-			if ( ModelsReady )
+			if ( ModelsReady && (MyGame.GameWaitingMap?.IsAllSetup() ?? false) )
 			{
 				if ( Client.IsUsingVr )
 				{
@@ -90,6 +90,7 @@ namespace FantasyTest
 				if ( result is DeggPlayer player )
 				{
 					player.Respawn();
+					player.Position = MyGame.GameWaitingMap.MainSpawn.Position;
 				}
 
 

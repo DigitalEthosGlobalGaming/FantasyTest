@@ -5,7 +5,7 @@ namespace FantasyTest.MapEntities
 {
 	public partial class MapProp : MapEntity
 	{
-
+		public bool IsGhost { get; set; }
 		public PropResource PropData { get; set; }
 		public List<Entity> OtherEntities { get; set; }
 
@@ -13,6 +13,8 @@ namespace FantasyTest.MapEntities
 		{
 			base.Spawn();
 			OtherEntities = new List<Entity>();
+			Tags.Add( "prop" );
+			Tags.Add( "solid" );
 		}
 
 		public void SetPropData( PropResource prop )

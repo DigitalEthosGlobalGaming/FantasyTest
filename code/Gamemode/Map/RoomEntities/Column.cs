@@ -20,7 +20,7 @@ namespace FantasyTest.MapEntities
 			}
 			var attachments = new string[] { "top_left", "top_right", "top_forward", "top_back" };
 
-			if ( Rand.Float() > 0.8 )
+			if ( Rand.Float() > 0.8 || true )
 			{
 				var attachment = Rand.FromArray( attachments );
 
@@ -32,7 +32,6 @@ namespace FantasyTest.MapEntities
 					light.MountPosition = Position;
 					light.TurnOn();
 					OtherEntities.Add( light );
-					DebugOverlay.Sphere( lightModelLightPosition, 5f, Color.Blue, 5f );
 				}
 				else
 				{

@@ -44,6 +44,15 @@ namespace FantasyTest
 		public float SpreadMultiplier { get; set; } = 1;
 
 
+		public T GetOwner<T>() where T : Player
+		{
+			if ( Owner is T t )
+			{
+				return t;
+			}
+			return null;
+		}
+
 		public int AvailableAmmo()
 		{
 			var owner = Owner as GameBasePlayer;
@@ -330,7 +339,7 @@ namespace FantasyTest
 			}
 		}
 
-		public virtual TraceResult TraceFromEyes( float distance, float radius )
+		public virtual TraceResult TraceFromEyes( float distance, float radius, string[] ignoreTags = null )
 		{
 			var forward = Owner.EyeRotation.Forward.Normal;
 			var start = Owner.EyePosition;
@@ -338,10 +347,14 @@ namespace FantasyTest
 			var tr = Trace.Ray( start, end )
 				.Ignore( Owner )
 				.Ignore( this )
-				.Size( radius )
-				.Run();
+				.Size( radius );
 
-			return tr;
+			if ( ignoreTags != null && ignoreTags.Length > 0 )
+			{
+				tr = tr.WithoutTags( ignoreTags );
+			}
+
+			return tr.Run();
 		}
 
 		public virtual IEnumerable<TraceResult> TraceShove( Vector3 start, Vector3 end, float radius = 2.0f )

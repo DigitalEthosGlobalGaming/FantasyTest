@@ -81,9 +81,9 @@ public partial class MyGame : DeggGame
 
 	public static void TeleportAllPlayersToWaitingRoom()
 	{
-		if ( GameWaitingRoom?.IsValid() ?? false )
+		if ( GameWaitingMap?.IsValid() ?? false )
 		{
-			var spawnPosition = GameWaitingRoom.Position + (Vector3.Up * Metrics.TerryHeight);
+			var spawnPosition = GameWaitingMap.Position + (Vector3.Up * Metrics.TerryHeight);
 			var players = DeggPlayer.GetAllPlayers<GameBasePlayer>();
 			foreach ( var player in players )
 			{
@@ -95,12 +95,12 @@ public partial class MyGame : DeggGame
 
 	public static void SetupWaitingRoom()
 	{
-		if ( GameWaitingRoom?.IsValid() ?? false )
+		if ( GameWaitingMap?.IsValid() ?? false )
 		{
-			GameWaitingRoom.Delete();
+			GameWaitingMap.Delete();
 		}
-		GameWaitingRoom = new WaitingRoom();
-		GameWaitingRoom.Create();
+		GameWaitingMap = new WaitingMap();
+		GameWaitingMap.BuildRooms();
 	}
 
 

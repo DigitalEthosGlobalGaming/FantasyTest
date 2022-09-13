@@ -11,6 +11,7 @@ namespace FantasyTest
 	}
 	public partial class MapTile : GridSpace
 	{
+		public bool ForceSetup { get; set; }
 		public Room TileRoom { get; set; }
 		public override float GetMovementWeight( GridSpace a, NavPoint n )
 		{
@@ -18,7 +19,6 @@ namespace FantasyTest
 		}
 		public float Difficulty { get; set; }
 		public RoomTypes RoomType { get; set; }
-		public bool HasRoom { get => RoomType != RoomTypes.None; }
 		public override void OnAddToMap()
 		{
 			base.OnAddToMap();
@@ -27,23 +27,24 @@ namespace FantasyTest
 
 		public bool IsSetup()
 		{
-			if ( !HasRoom )
+			if ( ForceSetup )
+			{
+				return true;
+			}
+			if ( !HasRoom() )
 			{
 				return true;
 			}
 			return TileRoom?.IsSetup ?? false;
 		}
+
+		public virtual bool HasRoom()
+		{
+			return RoomType != RoomTypes.None;
+		}
 		public override void ServerTick( float delta, float currentTick )
 		{
 			base.ServerTick( delta, currentTick );
-			if ( HasRoom )
-			{
-				DebugOverlay.Sphere( GetWorldPosition(), 50f, Color.Green, 0f, false );
-			}
-			else
-			{
-				DebugOverlay.Sphere( GetWorldPosition(), 50f, Color.Red, 0f, false );
-			}
 		}
 
 		public void OnAllChildrenSetup()
@@ -57,7 +58,7 @@ namespace FantasyTest
 			{
 				return;
 			}
-			if ( HasRoom )
+			if ( HasRoom() )
 			{
 				if ( TileRoom?.IsValid() ?? false )
 				{
@@ -66,11 +67,6 @@ namespace FantasyTest
 				TileRoom = new Room();
 				TileRoom.Create( this );
 			}
-		}
-
-		public override void OnMapSetup()
-		{
-			base.OnMapSetup();
 		}
 
 		protected override void OnDestroy()
