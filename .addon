@@ -20,9 +20,10 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "ProjectTemplate": null,
-    "GameCategory": "None",
+    "GameCategory": "Roleplay",
     "ControlModes": {
-      "Keyboard": true
+      "Keyboard": true,
+      "VR": true
     },
     "Collision": {
       "Defaults": {
@@ -100,6 +101,11 @@
           "r": "Collide"
         }
       ]
+    },
+    "Compiler": {
+      "RootNamespace": "Sandbox",
+      "DefineConstants": "SANDBOX;ADDON;DEBUG",
+      "NoWarn": "1701;1702;1591;"
     }
   }
 }

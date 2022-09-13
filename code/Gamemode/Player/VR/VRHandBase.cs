@@ -1,4 +1,5 @@
-﻿using Sandbox;
+﻿using Degg.Util;
+using Sandbox;
 
 namespace FantasyTest.Gamemode.Player.VR
 {
@@ -17,22 +18,30 @@ namespace FantasyTest.Gamemode.Player.VR
 		{
 			SetModel( ModelPath );
 
+			EnableAllCollisions = false;
+			EnableSelfCollisions = false;
+
+			PhysicsEnabled = false;
+
+			Predictable = true;
+
 			Transmit = TransmitType.Always;
 		}
 
 		public override void FrameSimulate( Client cl )
 		{
 			base.FrameSimulate( cl );
-
-			Transform = InputHand.Transform;
 		}
 
 		public override void Simulate( Client cl )
 		{
 			base.Simulate( cl );
 
-			Transform = InputHand.Transform;
-			Animate();
+			if (IsServer)
+			{
+				Transform = InputHand.Transform;
+				Animate();
+			}
 		}
 
 		private void Animate()
