@@ -24,7 +24,7 @@ namespace FantasyTest
 		[Net, Predicted]
 		public Vector3 PlacePosition { get; set; }
 		public override string WorldModel => "weapon_dagger";
-		public override string ViewModelPath => "weapon_small_axe";
+		public override string ViewModelPath => "v_book_builder";
 
 		public float NextPlaceTime = 0f;
 

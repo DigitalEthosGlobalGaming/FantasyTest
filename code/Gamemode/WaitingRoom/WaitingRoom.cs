@@ -8,6 +8,8 @@ namespace FantasyTest
 	{
 		public List<Entity> WatchedEntities { get; set; }
 
+		public EnvironmentLightEntity GlobalLight { get; set; }
+
 		public override void Create( MapTile tile )
 		{
 			if ( IsClient )
@@ -24,6 +26,15 @@ namespace FantasyTest
 			};
 			WatchedEntities.Add( light );
 			light.Position = Position + Vector3.Up * 250f;
+
+			GlobalLight?.Delete();
+			GlobalLight = new EnvironmentLightEntity();
+			GlobalLight.SkyColor = Color.White.Darken( 0.95f );
+			GlobalLight.DynamicShadows = true;
+			GlobalLight.Color = Color.White;
+			GlobalLight.Rotation = Rotation.FromAxis( Vector3.Down, 0f );
+			GlobalLight.Brightness = 0f;
+			GlobalLight.SkyIntensity = 1f;
 
 		}
 
@@ -43,6 +54,7 @@ namespace FantasyTest
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();
+			GlobalLight?.Delete();
 			if ( IsServer )
 			{
 				if ( WatchedEntities != null )

@@ -13,6 +13,11 @@
 			AirAcceleration = 10;
 		}
 
+		public virtual bool ShouldJump()
+		{
+			return false;
+		}
+
 
 		public override void Simulate()
 		{

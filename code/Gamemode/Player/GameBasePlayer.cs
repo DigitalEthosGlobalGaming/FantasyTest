@@ -1,6 +1,5 @@
 ﻿using Degg.Core;
 using Sandbox;
-using Sandbox.Gamemode.Player;
 
 namespace FantasyTest
 {
@@ -24,8 +23,8 @@ namespace FantasyTest
 
 			if ( MainWeapon?.IsValid() == null )
 			{
-				/*MainWeapon = new Builder();
-				Inventory.Add( MainWeapon, true );*/
+				MainWeapon = new Builder();
+				Inventory.Add( MainWeapon, true );
 			}
 			SetupRoom();
 		}
