@@ -13,6 +13,8 @@ namespace FantasyTest
 		[Net]
 		public bool IsReady { get; set; }
 
+		public bool ClientReadied { get; set; }
+
 		[Net]
 		public bool ModelsReady { get; set; }
 		public override void HudSetup()
@@ -69,7 +71,7 @@ namespace FantasyTest
 			}
 
 			ModelLoader = new ModelStore();
-			ModelLoader.LoadModel( "weapon_dagger", "models/fantasy/items/dagger.vmdl" );
+			ModelLoader.LoadModel( "weapon_dagger", "deggassets/models/fantasy/items/dagger.vmdl" );
 		}
 
 
@@ -103,6 +105,15 @@ namespace FantasyTest
 		{
 			base.Simulate( cl );
 
+			if ( IsClient )
+			{
+				if ( !ClientReadied )
+				{
+					GameStart();
+					ClientReadied = true;
+				}
+			}
+
 			if ( ModelsReady == false && (ModelLoader?.IsValid() ?? false) )
 			{
 				if ( ModelLoader.IsComplete )
@@ -112,12 +123,6 @@ namespace FantasyTest
 			}
 			if ( IsServer )
 			{
-
-				if ( Input.Pressed( InputButton.Jump ) )
-				{
-					IsReady = true;
-				}
-
 				if ( IsReady )
 				{
 					OnJoin();

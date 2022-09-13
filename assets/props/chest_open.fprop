@@ -5,7 +5,10 @@
 		PropName = "Chest Open"
 		Description = ""
 		Category = "General"
-		Model = resource:"models/fantasy/map/chest_gold.vmdl"
+		Model = resource:"deggassets/models/fantasy/map/chest_gold.vmdl"
 		ClassName = ""
+		Mass = -1
+		Scale = 1
+		CanPickup = false
 	}
 }
