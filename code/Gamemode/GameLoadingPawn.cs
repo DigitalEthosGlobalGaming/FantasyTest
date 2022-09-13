@@ -73,6 +73,7 @@ namespace FantasyTest
 
 			ModelLoader = new ModelStore();
 			ModelLoader.LoadModel( "weapon_dagger", "deggassets/models/fantasy/items/dagger.vmdl" );
+			ModelLoader.LoadModel( "weapon_small_axe", "deggassets/models/fantasy/viewmodels/v_crowbar.vmdl" );
 		}
 
 

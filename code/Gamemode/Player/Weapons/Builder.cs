@@ -24,11 +24,10 @@ namespace FantasyTest
 		[Net, Predicted]
 		public Vector3 PlacePosition { get; set; }
 		public override string WorldModel => "weapon_dagger";
-		public override string ViewModelPath => "weapon_dagger";
+		public override string ViewModelPath => "weapon_small_axe";
 
 		public float NextPlaceTime = 0f;
 
-		public override Transform ViewModelOffset => new Transform( Vector3.Down * 5f + Vector3.Forward * 20f + Vector3.Right * 5f, Rotation.FromAxis( Vector3.Left, 90f ), 0.5f );
 		// override ViewModelScale
 
 		public override void Spawn()
@@ -130,7 +129,6 @@ namespace FantasyTest
 				return;
 			}
 
-
 			AdvLog.Info( this.GetHashCode(), Time.Now );
 
 			var trace = TraceFromEyes( 500f, 5f, new string[] { "player-room" } );
@@ -144,7 +142,39 @@ namespace FantasyTest
 
 				CreateProp( trace.EndPosition, Rotation.FromAxis( Vector3.Up, rotation ) );
 			}
+
+			ViewModelEntity?.SetAnimParameter( "fire", true );
+
+
+			if ( Owner is GameBasePlayer player )
+			{
+				player.SetAnimParameter( "b_attack", true );
+			}
+
+
 		}
+
+		public override void SimulateAnimator( PawnAnimator anim )
+		{
+			anim.SetAnimParameter( "holdtype", 5 ); // TODO this is shit
+			anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		}
+
+		public override void SetCarryPosition()
+		{
+			base.SetCarryPosition();
+			// dumb hard-coded positions
+			EnableDrawing = true;
+			var transform = Transform.Zero;
+			transform.Position += Vector3.Right * 10.5f;
+			transform.Position += Vector3.Down * -3;
+			transform.Position += Vector3.Forward * 3;
+			transform.Rotation *= Rotation.FromPitch( 220 );
+			transform.Rotation *= Rotation.FromYaw( -15 );
+			transform.Rotation *= Rotation.FromRoll( -10 );
+			SetParent( Owner, "spine_2", transform );
+		}
+
 		public override void Simulate( Client player )
 		{
 			base.Simulate( player );
