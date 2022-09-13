@@ -60,5 +60,9 @@ namespace FantasyTest
 				player.MyRoom = this;
 			}
 		}
+		public override string GetSaveName()
+		{
+			return "player_room" + OwnerClient.PlayerId + ".json";
+		}
 	}
 }

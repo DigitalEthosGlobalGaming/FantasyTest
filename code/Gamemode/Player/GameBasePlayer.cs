@@ -74,9 +74,23 @@ namespace FantasyTest
 
 			if ( IsServer )
 			{
-				if ( Input.Pressed( InputButton.Slot1 ) )
+				if ( Input.Pressed( InputButton.Slot0 ) )
 				{
 					MyGame.Restart();
+				}
+
+				if ( MyRoom?.IsValid() ?? false )
+				{
+					if ( Input.Pressed( InputButton.Slot1 ) )
+					{
+						MyRoom.Save();
+					}
+
+					if ( Input.Pressed( InputButton.Slot2 ) )
+					{
+						MyRoom.Load();
+					}
+
 				}
 			}
 		}

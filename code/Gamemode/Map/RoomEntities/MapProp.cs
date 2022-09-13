@@ -9,12 +9,21 @@ namespace FantasyTest.MapEntities
 		public PropResource PropData { get; set; }
 		public List<Entity> OtherEntities { get; set; }
 
+		public Room Room { get; set; }
+
 		public override void Spawn()
 		{
 			base.Spawn();
 			OtherEntities = new List<Entity>();
 			Tags.Add( "prop" );
 			Tags.Add( "solid" );
+		}
+
+		public void AddToRoom( Room room )
+		{
+			Room = room;
+			Room.Props.Add( this );
+
 		}
 
 		public void SetPropData( PropResource prop )
@@ -40,6 +49,19 @@ namespace FantasyTest.MapEntities
 			{
 				RenderColor = Color.Green.WithAlpha( 0.5f );
 			}
+		}
+
+		public static MapProp Create( PropResource res )
+		{
+			var className = res.ClassName;
+			if ( className.Trim() == "" )
+			{
+				className = "GenericProp";
+			}
+			var newEntity = Entity.CreateByName<MapProp>( className );
+			newEntity.SetPropData( res );
+
+			return newEntity;
 		}
 
 		protected override void OnDestroy()

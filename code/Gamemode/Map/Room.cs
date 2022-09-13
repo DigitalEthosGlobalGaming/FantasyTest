@@ -21,12 +21,17 @@ namespace FantasyTest
 
 		public RoomConnection RightConnection { get; set; }
 
+		public List<MapProp> Props { get; set; }
+
 		[Net]
 		public float Height { get; set; }
+
+		public string LastSaved { get; set; }
 
 		public override void OnSetup()
 		{
 			base.OnSetup();
+			Props = new List<MapProp>();
 			Height = RoomHeight;
 			if ( IsClient )
 			{
@@ -163,6 +168,43 @@ namespace FantasyTest
 					item?.Delete();
 				}
 			}
+		}
+
+		public virtual void Save()
+		{
+			List<MapPropSaveObjectData> objects = new List<MapPropSaveObjectData>();
+			foreach ( var prop in Props )
+			{
+				if ( prop?.IsValid ?? false )
+				{
+					objects.Add( MapPropSaveObject.Serialise( prop ) );
+				}
+			}
+
+
+			var saveName = GetSaveName();
+			FileSystem.Data.WriteJson( saveName, objects );
+		}
+
+		public virtual string GetSaveName()
+		{
+			return "room_" + GetHashCode() + ".json";
+		}
+		public virtual void Load()
+		{
+			var objects = FileSystem.Data.ReadJson<List<MapPropSaveObjectData>>( GetSaveName() );
+
+			foreach ( var i in Props )
+			{
+				i.Delete();
+			}
+
+			foreach ( var obj in objects )
+			{
+				var prop = MapPropSaveObject.Create( obj );
+				prop.AddToRoom( this );
+			}
+
 		}
 	}
 }

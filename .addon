@@ -86,7 +86,8 @@
         },
         {
           "a": "solid",
-          "b": "prop"
+          "b": "prop",
+          "r": "Collide"
         },
         {
           "a": "playerroom",
@@ -96,7 +97,7 @@
         {
           "a": "prop",
           "b": "prop",
-          "r": "Trigger"
+          "r": "Collide"
         }
       ]
     }

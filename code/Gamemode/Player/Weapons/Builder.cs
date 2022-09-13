@@ -93,6 +93,8 @@ namespace FantasyTest
 				newEntity.Rotation = rot;
 				newEntity.SetPropData( prop );
 
+				var playerRoom = GetOwner<GameBasePlayer>()?.MyRoom;
+				newEntity.AddToRoom( playerRoom );
 
 				CurrentPropResource = DeggGameResource.GetRandom<PropResource>();
 			}
