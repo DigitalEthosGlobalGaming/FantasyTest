@@ -32,10 +32,8 @@ public partial class MyGame
 
 	public static WaitingMap GameWaitingMap { get; set; }
 
-	[Net]
 	public static GameStateEnum GameState { get; set; }
 
-	[Net]
 	public static bool FirstPlayerJoined { get; set; }
 
 	public static void Restart()

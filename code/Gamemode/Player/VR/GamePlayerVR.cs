@@ -1,24 +1,30 @@
-﻿using Sandbox;
+﻿using Degg.Util;
+using Sandbox;
 namespace FantasyTest.Gamemode.Player.VR
 {
 	public partial class GamePlayerVR : GameBasePlayer
 	{
-		[Net, Local] public VRHandLeft LeftHand { get; set; }
-		[Net, Local] public VRHandRight RightHand { get; set; }
+		[Net, Predicted] public VRHandLeft LeftHand { get; set; }
+		[Net, Predicted] public VRHandRight RightHand { get; set; }
 
 		private void CreateHands()
 		{
 			DeleteHands();
 
-			LeftHand = new() { Owner = this };
-			RightHand = new() { Owner = this };
+			AdvLog.Info( "Create Hands" );
+
+			LeftHand = new() { };
+			RightHand = new() { };
 
 			LeftHand.Other = RightHand;
+			LeftHand.Parent = this;
 			RightHand.Other = LeftHand;
+			RightHand.Parent = this;
 		}
 
 		private void DeleteHands()
 		{
+			AdvLog.Info( "Delete Hands" );
 			LeftHand?.Delete();
 			RightHand?.Delete();
 		}
@@ -27,10 +33,13 @@ namespace FantasyTest.Gamemode.Player.VR
 		{
 			SetModel( "models/citizen/citizen.vmdl" );
 
-			Controller = new WalkController();
+			Log.Info( "Respawn VR Player?" );
+
+			Controller = new PlayerVRController();
 			Animator = new PlayerVRAnimator();
 			CameraMode = new FirstPersonCamera();
 
+			Log.Info( Controller.GetType() );
 
 			EnableAllCollisions = true;
 			EnableDrawing = true;
@@ -49,20 +58,18 @@ namespace FantasyTest.Gamemode.Player.VR
 		{
 			base.Simulate( cl );
 			SimulateActiveChild( cl, ActiveChild );
-
-			CheckRotate();
-			SetVrAnimProperties();
-
-			LeftHand?.Simulate( cl );
-			RightHand?.Simulate( cl );
+			
+			if (IsServer)
+			{
+				CheckRotate();
+				SetVrAnimProperties();
+			}
 		}
 
 		public override void FrameSimulate( Client cl )
 		{
 			base.FrameSimulate( cl );
 
-			LeftHand?.FrameSimulate( cl );
-			RightHand?.FrameSimulate( cl );
 		}
 		public void SetVrAnimProperties()
 		{
@@ -70,6 +77,9 @@ namespace FantasyTest.Gamemode.Player.VR
 				return;
 
 			if ( !Input.VR.IsActive )
+				return;
+
+			if ( !IsServer )
 				return;
 
 			SetAnimParameter( "b_vr", true );
@@ -103,19 +113,19 @@ namespace FantasyTest.Gamemode.Player.VR
 			{
 				if ( rotate > deadzone )
 				{
-					//Transform = Transform.RotateAround(
-					//	Input.VR.Head.Position.WithZ( Position.z ),
-					//	Rotation.FromAxis( Vector3.Up, -angle )
-					//);
+					Transform = Transform.RotateAround(
+						Input.VR.Head.Position.WithZ( Position.z ),
+						Rotation.FromAxis( Vector3.Up, -angle )
+					);
 
 					timeSinceLastRotation = 0;
 				}
 				else if ( rotate < -deadzone )
 				{
-					//Transform = Transform.RotateAround(
-					//	Input.VR.Head.Position.WithZ( Position.z ),
-					//	Rotation.FromAxis( Vector3.Up, angle )
-					//);
+					Transform = Transform.RotateAround(
+						Input.VR.Head.Position.WithZ( Position.z ),
+						Rotation.FromAxis( Vector3.Up, angle )
+					);
 
 					timeSinceLastRotation = 0;
 				}

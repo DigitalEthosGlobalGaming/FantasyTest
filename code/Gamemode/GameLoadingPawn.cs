@@ -87,7 +87,7 @@ namespace FantasyTest
 				}
 				else
 				{
-					EntityName = "GameBasePlayer";
+					EntityName = "GamePlayerPC";
 				}
 
 				var result = base.OnJoin();

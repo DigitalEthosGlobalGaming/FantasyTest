@@ -6,7 +6,6 @@ namespace FantasyTest
 {
 	public partial class GameBasePlayer : DeggPlayer
 	{
-
 		[Net]
 		public PlayerRoom MyRoom { get; set; }
 		public ClientInventory ClientInventory { get; set; }
@@ -22,18 +21,11 @@ namespace FantasyTest
 		public override void Respawn()
 		{
 			base.Respawn();
-			SetModel( "models/citizen/citizen.vmdl" );
-			SetCamera<PlayerCamera>();
-
-			Controller = new PCPlayerController();
-			EnableDrawing = true;
-			EnableHideInFirstPerson = true;
-			EnableShadowInFirstPerson = true;
 
 			if ( MainWeapon?.IsValid() == null )
 			{
-				MainWeapon = new Builder();
-				Inventory.Add( MainWeapon, true );
+				/*MainWeapon = new Builder();
+				Inventory.Add( MainWeapon, true );*/
 			}
 			SetupRoom();
 		}

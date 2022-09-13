@@ -44,15 +44,48 @@
 				children = 
 				[
 					{
-						_class = "PhysicsHullFromRender"
-						parent_bone = ""
+						_class = "PhysicsShapeSphere"
+						parent_bone = "finger_middle_meta_R"
 						surface_prop = "default"
-						collision_group = ""
-						collision_interact_as = ""
-						collision_interact_with = ""
-						collision_interact_exclude = ""
-						faceMergeAngle = 5.0
-						maxHullVertices = 53
+						collision_tags = "solid"
+						radius = 2.0
+						center = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "finger_thumb_2_R"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 1.0
+						point0 = [ -1.219616, 0.0, 0.0 ]
+						point1 = [ 1.085748, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "finger_index_2_R"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 1.0
+						point0 = [ -1.234029, 0.0, 0.0 ]
+						point1 = [ 0.806394, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "finger_middle_2_R"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 1.0
+						point0 = [ -1.232172, 0.0, 0.0 ]
+						point1 = [ 0.826096, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "finger_ring_2_R"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 1.0
+						point0 = [ -1.179884, 0.0, 0.0 ]
+						point1 = [ 0.840327, 0.0, 0.0 ]
 					},
 				]
 			},

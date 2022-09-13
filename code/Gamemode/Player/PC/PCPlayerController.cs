@@ -4,6 +4,10 @@ namespace FantasyTest
 {
 	public partial class PCPlayerController : FantasyPlayerController
 	{
+		public override bool ShouldJump()
+		{
+			return AutoJump ? Input.Down( InputButton.Jump ) : Input.Pressed( InputButton.Jump );
+		}
 		public override Vector3 GetWishVelocity()
 		{
 			var forward = 0;

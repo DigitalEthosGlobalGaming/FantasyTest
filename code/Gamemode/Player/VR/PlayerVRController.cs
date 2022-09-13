@@ -1,9 +1,29 @@
-﻿using Sandbox;
+﻿using Degg.Util;
+using Sandbox;
 
 namespace FantasyTest.Gamemode.Player.VR
 {
-	public class PlayerVRController : BasePlayerController
+	public class PlayerVRController : FantasyPlayerController
 	{
+		public override Vector3 GetWishVelocity()
+		{
+			Vector3 WishVelocity = Vector3.Zero;
+			WishVelocity += Input.VR.LeftHand.Joystick.Value.y * Input.VR.Head.Rotation.Forward;
+			WishVelocity += Input.VR.LeftHand.Joystick.Value.x * Input.VR.Head.Rotation.Right;
+
+			return WishVelocity;
+		}
+
+		public override void PreSimulate()
+		{
+			IsSprinting = Input.VR.LeftHand.JoystickPress.IsPressed;
+		}
+		public override void FrameSimulate()
+		{
+			EyeRotation = Input.VR.Head.Rotation;
+		}
+
+		/*
 		public float Speed => 100.0f;
 		public float Acceleration => 10.0f;
 		public float AirAcceleration => 50.0f;
@@ -581,6 +601,6 @@ namespace FantasyTest.Gamemode.Player.VR
 		{
 			if ( GroundEntity == null || GroundEntity.IsWorld )
 				return;
-		}
+		}*/
 	}
 }
