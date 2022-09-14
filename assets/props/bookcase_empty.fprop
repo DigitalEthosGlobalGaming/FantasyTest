@@ -2,13 +2,13 @@
 {
 	data = 
 	{
-		PropName = "Chest Open"
+		PropName = "Bookcase Empty"
 		Description = ""
 		Category = "Furniture"
-		Model = resource:"deggassets/models/fantasy/map/chest_gold.vmdl"
+		Model = resource:"deggassets/models/fantasy/items/bookcase_empty.vmdl"
 		ClassName = ""
 		Mass = -1
-		Scale = 1
+		Scale = 0.5
 		CanPickup = false
 	}
 }

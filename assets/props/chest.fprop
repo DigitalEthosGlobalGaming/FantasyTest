@@ -4,7 +4,7 @@
 	{
 		PropName = "Chest"
 		Description = "Fancy Chest"
-		Category = "General"
+		Category = "Furniture"
 		Model = resource:"deggassets/models/fantasy/map/chest.vmdl"
 		ClassName = ""
 		Mass = -1

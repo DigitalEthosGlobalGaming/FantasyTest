@@ -181,6 +181,10 @@ namespace FantasyTest
 
 			var mouseRotation = (float)Input.MouseWheel * Time.Delta * 1000f;
 
+			if ( Input.Down( InputButton.Duck ) )
+			{
+				mouseRotation /= 10;
+			}
 			PlacementRotation += mouseRotation;
 
 			if ( IsClient )

@@ -32,7 +32,7 @@ namespace FantasyTest.MapEntities
 
 			SetModel( prop.Model );
 
-
+			Scale = prop.Scale;
 
 			if ( !IsClientOnly )
 			{

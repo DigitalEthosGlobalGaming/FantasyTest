@@ -2,13 +2,13 @@
 {
 	data = 
 	{
-		PropName = "Chest Open"
+		PropName = "Skull"
 		Description = ""
-		Category = "Furniture"
-		Model = resource:"deggassets/models/fantasy/map/chest_gold.vmdl"
+		Category = "Decorations"
+		Model = resource:"deggassets/models/fantasy/map/skull.vmdl"
 		ClassName = ""
 		Mass = -1
-		Scale = 1
-		CanPickup = false
+		Scale = 0.5
+		CanPickup = true
 	}
 }

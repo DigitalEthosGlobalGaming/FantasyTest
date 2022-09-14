@@ -2,10 +2,10 @@
 {
 	data = 
 	{
-		PropName = "Chest Open"
+		PropName = "Table Small"
 		Description = ""
-		Category = "Furniture"
-		Model = resource:"deggassets/models/fantasy/map/chest_gold.vmdl"
+		Category = "General"
+		Model = resource:"deggassets/models/fantasy/map/table_small.vmdl"
 		ClassName = ""
 		Mass = -1
 		Scale = 1

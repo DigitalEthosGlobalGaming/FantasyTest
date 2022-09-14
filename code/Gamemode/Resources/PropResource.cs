@@ -6,7 +6,10 @@ namespace FantasyTest
 
 	public enum PropResourceCategoryEnum
 	{
-		General
+		General,
+		Workbenches,
+		Furniture,
+		Decorations
 	}
 
 	[GameResource( "FantasyProp", "fprop", "Describes a Fanatasy Game Prop" )]

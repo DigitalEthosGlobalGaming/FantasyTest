@@ -2,11 +2,11 @@
 {
 	data = 
 	{
-		PropName = "Chest Open"
-		Description = ""
-		Category = "Furniture"
-		Model = resource:"deggassets/models/fantasy/map/chest_gold.vmdl"
-		ClassName = ""
+		PropName = null
+		Description = null
+		Category = "General"
+		Model = null
+		ClassName = null
 		Mass = -1
 		Scale = 1
 		CanPickup = false

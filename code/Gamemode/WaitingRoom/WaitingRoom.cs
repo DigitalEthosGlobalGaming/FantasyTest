@@ -35,17 +35,11 @@ namespace FantasyTest
 			GlobalLight.Rotation = Rotation.FromAxis( Vector3.Down, 0f );
 			GlobalLight.Brightness = 0f;
 			GlobalLight.SkyIntensity = 1f;
-
 		}
-
-
-
 		public void PlayerJoin()
 		{
 
 		}
-
-
 		public override void OnSetup()
 		{
 			base.OnSetup();

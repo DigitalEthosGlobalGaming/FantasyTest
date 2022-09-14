@@ -2,13 +2,13 @@
 {
 	data = 
 	{
-		PropName = "Chest Open"
+		PropName = "Chalice"
 		Description = ""
-		Category = "Furniture"
-		Model = resource:"deggassets/models/fantasy/map/chest_gold.vmdl"
+		Category = "Decorations"
+		Model = resource:"deggassets/models/fantasy/items/chalice.vmdl"
 		ClassName = ""
 		Mass = -1
-		Scale = 1
-		CanPickup = false
+		Scale = 0.25
+		CanPickup = true
 	}
 }
