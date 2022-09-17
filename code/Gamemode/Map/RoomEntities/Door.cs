@@ -1,11 +1,13 @@
-﻿namespace FantasyTest.MapEntities
+﻿using Sandbox.DeggCommon.Util;
+
+namespace FantasyTest.MapEntities
 {
 	public partial class Door : MapEntity
 	{
 		public override void Spawn()
 		{
 			base.Spawn();
-			SetModel( "models/fantasy/door.vmdl" );
+			SetModel( ModelStore.GetModel( "door" ) );
 		}
 	}
 }

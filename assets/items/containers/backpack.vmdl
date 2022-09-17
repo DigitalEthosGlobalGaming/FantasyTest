@@ -1,0 +1,141 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderPrimitiveBox"
+						name = "box"
+						parent_bone = ""
+						material_name = "dev/helper/testgrid.vmat"
+						origin = [ 0.0, 0.0, 0.0 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						max_u = 1.0
+						max_v = 1.0
+						dimensions = [ 10.0, 10.0, 10.0 ]
+						segments_x = 1
+						segments_y = 1
+						segments_z = 1
+						invert = false
+					},
+				]
+			},
+			{
+				_class = "PrefabList"
+				children = 
+				[
+					{
+						_class = "Prefab"
+						target_file = "deggassets/models/fantasy/items/backpack.vmdl"
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "physical_inventory_control"
+						game_keys = 
+						{
+							scale = 5.0
+							action = "previous_tab"
+							Tags = ""
+							position = [ 33.7722, -43.6083, 30.533 ]
+							index = 0.0
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "physical_inventory_control"
+						game_keys = 
+						{
+							scale = 5.0
+							action = "next_tab"
+							Tags = ""
+							position = [ 33.0968, 41.6514, 30.533 ]
+							index = 99.0
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "physical_inventory_slot"
+						game_keys = 
+						{
+							position = [ 33.6267, -25.5429, 32.7801 ]
+							index = 0.0
+							Tags = ""
+							scale = 11.5861
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "physical_inventory_slot"
+						game_keys = 
+						{
+							position = [ 33.6267, -0.714542, 32.7801 ]
+							index = 1.0
+							Tags = ""
+							scale = 11.5861
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "physical_inventory_slot"
+						game_keys = 
+						{
+							position = [ 33.6267, 25.4361, 32.7801 ]
+							index = 2.0
+							Tags = ""
+							scale = 11.5861
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "physical_inventory_slot"
+						game_keys = 
+						{
+							position = [ 33.6267, -24.6899, -7.64587 ]
+							index = 3.0
+							Tags = ""
+							scale = 11.5861
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "physical_inventory_slot"
+						game_keys = 
+						{
+							position = [ 33.6267, 0.857686, -8.47829 ]
+							index = 4.0
+							Tags = ""
+							scale = 11.5861
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "physical_inventory_slot"
+						game_keys = 
+						{
+							position = [ 33.6267, 27.7016, -10.9793 ]
+							index = 5.0
+							Tags = ""
+							scale = 11.5861
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}

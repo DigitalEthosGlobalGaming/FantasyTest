@@ -1,4 +1,6 @@
-﻿namespace FantasyTest.MapEntities
+﻿using Sandbox.DeggCommon.Util;
+
+namespace FantasyTest.MapEntities
 {
 	public partial class Wall : MapEntity
 	{
@@ -6,7 +8,7 @@
 		public override void Spawn()
 		{
 			base.Spawn();
-			SetModel( "models/fantasy/walls.vmdl" );
+			SetModel( ModelStore.GetModel( "wall" ) );
 			Tags.Add( "solid" );
 			SetupPhysicsFromModel( Sandbox.PhysicsMotionType.Static );
 			EnableShadowCasting = true;

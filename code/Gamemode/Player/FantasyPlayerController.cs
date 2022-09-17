@@ -5,6 +5,8 @@
 
 		public bool IsSprinting = false;
 		public bool IsCrouching = false;
+
+		public bool CanRotate = true;
 		public FantasyPlayerController()
 		{
 			WalkSpeed = 140;

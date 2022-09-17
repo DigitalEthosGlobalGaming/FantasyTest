@@ -1,6 +1,7 @@
 ﻿using Degg.GridSystem;
 using FantasyTest.MapEntities;
 using Sandbox;
+using Sandbox.DeggCommon.Util;
 using System.Collections.Generic;
 
 namespace FantasyTest
@@ -27,7 +28,7 @@ namespace FantasyTest
 
 			Floor = new ModelEntity();
 			Floor.SetupPhysicsFromModel( PhysicsMotionType.Static );
-			Floor.SetModel( "models/fantasy/floor_standard.vmdl" );
+			Floor.SetModel( ModelStore.GetModel( "floor" ) );
 			Floor.Position = Position;
 		}
 

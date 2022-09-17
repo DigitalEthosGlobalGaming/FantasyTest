@@ -75,6 +75,17 @@ namespace FantasyTest
 			ModelLoader.LoadModel( "weapon_dagger", "deggassets/models/fantasy/items/dagger.vmdl" );
 			ModelLoader.LoadModel( "weapon_small_axe", "deggassets/models/fantasy/viewmodels/v_crowbar.vmdl" );
 			ModelLoader.LoadModel( "v_book_builder", "deggassets/models/fantasy/viewmodels/v_book_builder.vmdl" );
+			//ModelLoader.LoadModel( "floor", "models/fantasy/floor_standard.vmdl" );
+			//ModelLoader.LoadModel( "wall", "models/fantasy/floor_standard.vmdl" );
+			//ModelLoader.LoadModel( "wall", " models/fantasy/walls.vmdl" );
+			ModelLoader.LoadModel( "floor", "deggassets/models/basic/basic_floor.vmdl" );
+			ModelLoader.LoadModel( "wall", "deggassets/models/basic/basic_wall.vmdl" );
+			ModelLoader.LoadModel( "door", "deggassets/models/basic/basic_doorway.vmdl" );
+
+			ModelLoader.LoadModel( "player_backpack", "assets/items/containers/backpack.vmdl" );
+
+
+
 		}
 
 
