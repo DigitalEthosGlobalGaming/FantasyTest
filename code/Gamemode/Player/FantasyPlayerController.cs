@@ -15,6 +15,15 @@
 			AirAcceleration = 10;
 		}
 
+		public override Rotation GetPlayerRotation()
+		{
+			if ( CanRotate )
+			{
+				return base.GetPlayerRotation();
+			}
+			return Rotation;
+		}
+
 		public virtual bool ShouldJump()
 		{
 			return false;

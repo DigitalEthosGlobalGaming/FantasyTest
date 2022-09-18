@@ -52,7 +52,6 @@ namespace Sandbox.Gamemode.Player.PC
 					{
 						if ( IsViewing )
 						{
-
 							Backpack.Position = Position + Rotation.Forward * 100f;
 						}
 						else
